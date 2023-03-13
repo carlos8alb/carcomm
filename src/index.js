@@ -4,7 +4,8 @@ import {
   select,
   text,
   confirm,
-  multiselect
+  multiselect,
+  isCancel
 } from '@clack/prompts'
 import colors from 'picocolors'
 import { trytm } from '@bdsqqq/try'
@@ -38,6 +39,11 @@ if (stagedFiles.length === 0 && changedFiles.length > 0) {
       label: file
     }))
   })
+
+  if (isCancel(files)) {
+    outro(`${colors.yellow('No hay archivos para commitear.')}`)
+    process.exit(0)
+  }
 
   await gitAdd({ files })
 }

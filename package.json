@@ -1,16 +1,21 @@
 {
   "name": "comapp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Help you to create commits easier.",
   "type": "module",
+  "bin": {
+    "comapp": "src/index.js"
+  },
+  "main": "index.js",
   "scripts": {
+    "comapp": "comapp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "standard": "^17.0.0"
+    "comapp": "file://.",
+    "standard": "17.0.0"
   },
   "eslintConfig": {
     "extends": "standard",
@@ -20,8 +25,8 @@
     }
   },
   "dependencies": {
-    "@bdsqqq/try": "^2.3.1",
+    "@bdsqqq/try": "2.3.1",
     "@clack/prompts": "0.6.3",
-    "picocolors": "^1.0.0"
+    "picocolors": "1.0.0"
   }
 }
