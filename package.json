@@ -1,20 +1,20 @@
 {
-  "name": "comapp",
-  "version": "1.0.0",
+  "name": "carcomm",
+  "version": "1.0.1",
   "description": "Help you to create commits easier.",
   "type": "module",
   "bin": {
-    "comapp": "src/index.js"
+    "carcomm": "./src/bin.js"
   },
   "main": "index.js",
   "scripts": {
-    "comapp": "comapp",
+    "carcomm": "carcomm",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "comapp": "file://.",
+    "carcomm": "file://.",
     "standard": "17.0.0"
   },
   "eslintConfig": {
