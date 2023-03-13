@@ -15,5 +15,5 @@
 Solamente ejecutar
 
 ```bash
-npm carcomm
+npx carcomm
 ```
