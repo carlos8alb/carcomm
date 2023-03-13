@@ -1,0 +1,27 @@
+{
+  "name": "comapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^17.0.0"
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "rules": {
+      "no-multiple-empty-lines": "off",
+      "space-before-function-paren": "off"
+    }
+  },
+  "dependencies": {
+    "@bdsqqq/try": "^2.3.1",
+    "@clack/prompts": "0.6.3",
+    "picocolors": "^1.0.0"
+  }
+}
