@@ -1,21 +1,21 @@
 {
   "name": "carcomm",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "Help you to create commits easier",
   "type": "module",
   "bin": {
-    "carcomm": "src/bin.js"
+    "carcomm": "./src/bin.js"
   },
-  "main": "src/index.js",
+  "main": "src/bin.js",
   "scripts": {
-    "carcomm": "node src/index.js",
+    "carcomm": "carcomm",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "carcomm": "file://.",
+    "carcomm": "file:/.",
     "standard": "17.0.0"
   },
   "eslintConfig": {
