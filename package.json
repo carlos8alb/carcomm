@@ -1,16 +1,17 @@
 {
   "name": "carcomm",
   "version": "1.0.2",
-  "description": "Help you to create commits easier.",
+  "description": "Help you to create commits easier",
   "type": "module",
   "bin": {
-    "carcomm": "./src/bin.js"
+    "carcomm": "src/bin.js"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "carcomm": "carcomm",
+    "carcomm": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -18,15 +19,11 @@
     "standard": "17.0.0"
   },
   "eslintConfig": {
-    "extends": "standard",
-    "rules": {
-      "no-multiple-empty-lines": "off",
-      "space-before-function-paren": "off"
-    }
+    "extends": "standard"
   },
   "dependencies": {
     "@bdsqqq/try": "2.3.1",
-    "@clack/prompts": "0.6.3",
+    "@clack/prompts": "0.6.1",
     "picocolors": "1.0.0"
   }
 }
