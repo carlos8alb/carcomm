@@ -12,6 +12,7 @@ import { trytm } from '@bdsqqq/try'
 
 import { COMMIT_TYPES } from './commit-types.js'
 import { getChangedFiles, getStagedFiles, gitCommit, gitAdd } from './git.js'
+import { exitProgram } from './utils.js'
 
 const [changedFiles, errorChangedFiles] = await trytm(getChangedFiles())
 const [stagedFiles, errorStagedFiles] = await trytm(getStagedFiles())
@@ -25,8 +26,10 @@ intro(
 )
 
 if (errorChangedFiles ?? errorStagedFiles) {
-  outro(colors.red('Error: Comprueba que estás en un repositorio de git.'))
-  process.exit(1)
+  exitProgram({
+    code: 1,
+    message: 'Error: Comprueba que estás en un repositorio de git.'
+  })
 }
 
 if (stagedFiles.length === 0 && changedFiles.length > 0) {
@@ -41,8 +44,10 @@ if (stagedFiles.length === 0 && changedFiles.length > 0) {
   })
 
   if (isCancel(files)) {
-    outro(`${colors.yellow('No hay archivos para commitear.')}`)
-    process.exit(0)
+    exitProgram({
+      code: 0,
+      message: 'No hay archivos para commitear.'
+    })
   }
 
   await gitAdd({ files })
@@ -56,6 +61,13 @@ const commitType = await select({
   }))
 })
 
+if (isCancel(commitType)) {
+  exitProgram({
+    code: 0,
+    message: 'No hay archivos para commitear.'
+  })
+}
+
 const commitMessage = await text({
   message: colors.cyan('Introduce el mensaje del commit'),
   validate: (value) => {
@@ -68,6 +80,13 @@ const commitMessage = await text({
     }
   }
 })
+
+if (isCancel(commitMessage)) {
+  exitProgram({
+    code: 0,
+    message: 'No hay archivos para commitear.'
+  })
+}
 
 const { emoji, release } = COMMIT_TYPES[commitType]
 
@@ -83,6 +102,13 @@ if (release) {
   })
 }
 
+if (isCancel(breakingChange)) {
+  exitProgram({
+    code: 0,
+    message: 'No hay archivos para commitear.'
+  })
+}
+
 let commit = `${emoji} ${commitType}: ${commitMessage}`
 commit = breakingChange ? `${commit} [breaking change]` : commit
 
@@ -94,9 +120,18 @@ const shouldContinue = await confirm({
   `
 })
 
+if (isCancel(shouldContinue)) {
+  exitProgram({
+    code: 0,
+    message: 'No hay archivos para commitear.'
+  })
+}
+
 if (!shouldContinue) {
-  outro(colors.yellow('No se ha creado el commit'))
-  process.exit(0)
+  exitProgram({
+    code: 0,
+    message: 'No se ha creado el commit'
+  })
 }
 
 await gitCommit({ commit })

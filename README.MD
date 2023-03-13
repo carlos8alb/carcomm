@@ -10,8 +10,10 @@
 - [x] Crear binario
 - [x] Publucar el paquete en npm
 
-## Inicializar proyect + Instalar Linter
+## ¿Cómo utilizar carcomm?
+
+Solamente ejecutar
 
 ```bash
-npm init -y
+npm carcomm
 ```
